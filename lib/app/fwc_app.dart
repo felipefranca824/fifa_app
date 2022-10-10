@@ -1,6 +1,7 @@
-import 'package:fifa_book_app/app/core/theme/theme_config.dart';
 import 'package:fifa_book_app/app/pages/splash/splash_page.dart';
 import 'package:flutter/material.dart';
+
+import 'core/ui/theme/theme_config.dart';
 
 class FwcApp extends StatelessWidget {
   const FwcApp({Key? key}) : super(key: key);

@@ -1,16 +1,17 @@
-import 'package:fifa_book_app/app/core/styles/colors_app.dart';
-import 'package:fifa_book_app/app/core/styles/text_styles.dart';
 import 'package:flutter/material.dart';
+
+import '../styles/colors_app.dart';
+import '../styles/text_styles.dart';
 
 class ThemeConfig {
   ThemeConfig._();
 
   static final _border = OutlineInputBorder(
-        borderRadius: BorderRadius.circular(18),
-        borderSide: BorderSide(
-          color: ColorsApp.i.greyDark,
-          width: 1,
-        ));
+      borderRadius: BorderRadius.circular(18),
+      borderSide: BorderSide(
+        color: ColorsApp.i.greyDark,
+        width: 1,
+      ));
 
   static final theme = ThemeData(
       appBarTheme: AppBarTheme(

@@ -1,5 +1,6 @@
-import 'package:fifa_book_app/app/core/styles/colors_app.dart';
 import 'package:flutter/material.dart';
+
+import 'colors_app.dart';
 
 class TextStyles {
   static TextStyles? _instance;
