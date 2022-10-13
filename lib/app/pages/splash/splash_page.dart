@@ -1,20 +1,24 @@
-import 'package:fifa_book_app/app/core/ui/helpers/loader.dart';
-import 'package:fifa_book_app/app/core/ui/helpers/messages.dart';
+// ignore_for_file: public_member_api_docs, sort_constructors_first
+import 'package:flutter/material.dart';
 import 'package:fifa_book_app/app/core/ui/styles/button_styles.dart';
 import 'package:fifa_book_app/app/core/ui/styles/colors_app.dart';
 import 'package:fifa_book_app/app/core/ui/styles/text_styles.dart';
 import 'package:fifa_book_app/app/core/ui/widgets/button.dart';
-import 'package:flutter/material.dart';
+import 'package:fifa_book_app/app/pages/splash/presenter/splash_presenter.dart';
+import 'package:fifa_book_app/app/pages/splash/view/splash_view_impl.dart';
 
 class SplashPage extends StatefulWidget {
-  const SplashPage({Key? key}) : super(key: key);
+  final SplashPresenter presenter;
+  const SplashPage({
+    Key? key,
+    required this.presenter,
+  }) : super(key: key);
 
   @override
   State<SplashPage> createState() => _SplashPageState();
 }
 
-class _SplashPageState extends State<SplashPage>
-    with Loader<SplashPage>, Messages<SplashPage> {
+class _SplashPageState extends SplashViewImpl {
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
@@ -49,7 +53,9 @@ class _SplashPageState extends State<SplashPage>
                   label: "Acessar",
                   style: context.buttonStyles.yellowButton,
                   width: size.width * .9,
-                  onPressed: () {},
+                  onPressed: () {
+                    widget.presenter.checkLogin();
+                  },
                   labelStyle:
                       context.textStyles.textSecondaryFontExtraBoldPrimaryColor,
                 ),
