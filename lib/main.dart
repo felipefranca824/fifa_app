@@ -5,5 +5,5 @@ import 'app/fwc_app.dart';
 
 Future<void> main() async {
   await Env.i.load();
-  runApp(const FwcApp());
+  runApp(FwcApp());
 }
