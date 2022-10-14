@@ -1,17 +1,26 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
-import 'package:fifa_book_app/app/core/ui/styles/button_styles.dart';
-import 'package:fifa_book_app/app/core/ui/widgets/button.dart';
-import 'package:fifa_book_app/app/pages/home/widgets/status_tile.dart';
-import 'package:fifa_book_app/app/pages/home/widgets/sticker_percent_widget.dart';
+import 'package:fifa_book_app/app/pages/home/view/home_view_impl.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
-
+import 'package:fifa_book_app/app/core/ui/styles/button_styles.dart';
 import 'package:fifa_book_app/app/core/ui/styles/colors_app.dart';
 import 'package:fifa_book_app/app/core/ui/styles/text_styles.dart';
+import 'package:fifa_book_app/app/core/ui/widgets/button.dart';
+import 'package:fifa_book_app/app/pages/home/presenter/home_presenter.dart';
+import 'package:fifa_book_app/app/pages/home/widgets/status_tile.dart';
+import 'package:fifa_book_app/app/pages/home/widgets/sticker_percent_widget.dart';
 
-class HomePage extends StatelessWidget {
-  const HomePage({Key? key}) : super(key: key);
+class HomePage extends StatefulWidget {
+  final HomePresenter presenter;
+  const HomePage({
+    Key? key,
+    required this.presenter,
+  }) : super(key: key);
 
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends HomeViewImpl {
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
@@ -26,7 +35,9 @@ class HomePage extends StatelessWidget {
               Icons.logout,
               color: Colors.white,
             ),
-            onPressed: () {},
+            onPressed: () {
+              widget.presenter.logout();
+            },
           )
         ],
       ),
@@ -55,13 +66,13 @@ class HomePage extends StatelessWidget {
                       ),
                     ),
                     StickerPercentWidget(
-                      percent: 60,
+                      percent: user?.totalCompletePercent ?? 0,
                     ),
                     const SizedBox(
                       height: 20,
                     ),
                     Text(
-                      '45 figurinhas',
+                      '${user?.totalStickers} figurinhas',
                       style: context.textStyles.titleWhite,
                     ),
                     const SizedBox(
@@ -72,7 +83,7 @@ class HomePage extends StatelessWidget {
                         'assets/images/all_icon.png',
                       ),
                       label: 'Todas',
-                      value: 45,
+                      value: user?.totalAlbum ?? 0,
                     ),
                     const SizedBox(
                       height: 30,
@@ -82,7 +93,7 @@ class HomePage extends StatelessWidget {
                         'assets/images/missing_icon.png',
                       ),
                       label: 'Faltando',
-                      value: 500,
+                      value: user?.totalComplete ?? 0,
                     ),
                     const SizedBox(
                       height: 30,
@@ -92,7 +103,7 @@ class HomePage extends StatelessWidget {
                         'assets/images/repeated_icon.png',
                       ),
                       label: 'Repetidas',
-                      value: 30,
+                      value: user?.totalDuplicates ?? 0,
                     ),
                     const SizedBox(
                       height: 20,
@@ -104,7 +115,9 @@ class HomePage extends StatelessWidget {
                           .copyWith(color: context.colors.yellow),
                       label: 'Minhas Figurinhas',
                       outline: true,
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.of(context).pushNamed('/my-stickers');
+                      },
                     )
                   ],
                 ),
