@@ -1,5 +1,6 @@
 import 'package:fifa_book_app/app/core/rest/custom_dio.dart';
 import 'package:fifa_book_app/app/pages/auth/login/login_page.dart';
+import 'package:fifa_book_app/app/pages/auth/login/login_route.dart';
 import 'package:fifa_book_app/app/pages/auth/register/register_page.dart';
 import 'package:fifa_book_app/app/pages/auth/register/register_route.dart';
 import 'package:fifa_book_app/app/pages/home/home_page.dart';
@@ -27,7 +28,7 @@ class FwcApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         routes: {
           '/': (context) => const SplashRoute(),
-          '/auth/login': (context) => const LoginPage(),
+          '/auth/login': (context) => const LoginRoute(),
           '/auth/register': (context) => const RegisterRoute(),
           '/home': (context) => const HomePage(),
         },
